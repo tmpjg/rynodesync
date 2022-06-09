@@ -1,6 +1,6 @@
 # Rinodesync
 
-Rinodesync se utiliza para sincronizar archivos entre dos equipos, utilizando *ssh*, teniendo en cuenta la modificación de nombres e inodos en el destino local.
+Rinodesync se utiliza para sincronizar archivos entre dos equipos, utilizando *ssh* y *rsync*, teniendo en cuenta la modificación de nombres e inodos en el destino local.
 
 El script `rinodesync.sh` crea un archivho `.shadow_sync`en donde mantiene una tabla con el nombre del archivo, el inodo remoto y el inodo local. De esta manera puede verificar si el archivo fue renombrado en el equipo remoto y renombrarlo localmente para que al momento de utilizar `rsync` no se modifique el numero de inodo local. Esto es util para que aplicaciones *harvester* como *Filebeat* puedan leer los archivos y controlar la rotación de estos basándose en su numero de inodo, sin generar duplicados ni perdida de información entre la rotación y la sincronización. 
 
